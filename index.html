@@ -518,6 +518,84 @@
     }
     .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-weight:300;letter-spacing:.3px}
 
+    /* ─── PHONE SECTION ─── */
+    .phone-section{
+      background:var(--black);
+      padding:100px 48px 120px;
+      text-align:center;
+      overflow:hidden;
+    }
+    .phone-eyebrow{
+      font-size:11px;font-weight:700;letter-spacing:2.5px;
+      text-transform:uppercase;color:rgba(255,255,255,.3);
+      margin-bottom:20px;display:block;
+    }
+    .phone-title{
+      font-size:clamp(32px,4.5vw,60px);font-weight:300;
+      letter-spacing:-2px;line-height:1.08;
+      margin-bottom:72px;
+    }
+    .phone-stage{
+      display:flex;align-items:flex-end;justify-content:center;
+      gap:0;position:relative;
+    }
+    .phone-main{
+      position:relative;z-index:3;
+      width:clamp(200px,22vw,300px);
+      flex-shrink:0;
+    }
+    .phone-main img{width:100%;height:auto;display:block;border-radius:28px;}
+    .phone-ghost{
+      width:clamp(160px,18vw,240px);
+      flex-shrink:0;
+      opacity:0;
+      transition:opacity .8s ease, transform .8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .phone-ghost img{
+      width:100%;height:auto;display:block;
+      border-radius:28px;
+      filter:brightness(0.35) blur(1px);
+    }
+    .phone-ghost-left{
+      transform:translateX(80px) scale(0.88);
+      transform-origin:right center;
+      z-index:2;
+    }
+    .phone-ghost-right{
+      transform:translateX(-80px) scale(0.88);
+      transform-origin:left center;
+      z-index:2;
+    }
+    .phone-section.revealed .phone-ghost{opacity:1}
+    .phone-section.revealed .phone-ghost-left{transform:translateX(0) scale(0.88)}
+    .phone-section.revealed .phone-ghost-right{transform:translateX(0) scale(0.88)}
+
+    /* ─── SHIMMER NA LOGO ─── */
+    .nav-logo img, .footer-brand img{
+      position:relative;
+    }
+    .logo-shimmer{
+      position:relative;display:inline-block;
+    }
+    .logo-shimmer::after{
+      content:'';
+      position:absolute;
+      top:0;left:-100%;
+      width:60%;height:100%;
+      background:linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255,255,255,0.18) 50%,
+        transparent 70%
+      );
+      animation:shimmer 3.5s infinite;
+    }
+    @keyframes shimmer{
+      0%{left:-100%}
+      60%{left:160%}
+      100%{left:160%}
+    }
+
     /* ─── RESPONSIVE ─── */
     @media(max-width:960px){
       nav{padding:0 24px}
@@ -551,7 +629,9 @@
 <!-- ─── NAV ─── -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="images/logo-noza.png" alt="Noza" style="height:72px;width:auto;display:block;"/>
+    <span class="logo-shimmer">
+      <img src="images/logo-noza.png" alt="Noza" style="height:72px;width:auto;display:block;"/>
+    </span>
   </a>
   <div class="nav-links">
     <a href="#solucoes">Soluções</a>
@@ -743,7 +823,24 @@
   </div>
 </div>
 
-<!-- ─── STATS — fundo branco ─── -->
+<!-- ─── CELULAR ─── -->
+<section class="phone-section">
+  <span class="phone-eyebrow">Plataforma Noza</span>
+  <h2 class="phone-title">Seu futuro, você<br/><span class="grad-text">encontra hoje.</span></h2>
+  <div class="phone-stage">
+    <div class="phone-ghost phone-ghost-left">
+      <img src="images/celular.png" alt=""/>
+    </div>
+    <div class="phone-main">
+      <img src="images/celular.png" alt="App Noza"/>
+    </div>
+    <div class="phone-ghost phone-ghost-right">
+      <img src="images/celular.png" alt=""/>
+    </div>
+  </div>
+</section>
+
+
 <div class="stats" id="stats-bar">
   <div class="stat">
     <div class="stat-num">
@@ -889,12 +986,24 @@
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-brand">
-    <img src="images/logo-noza.png" alt="Noza" style="height:68px;width:auto;display:block;"/>
+    <span class="logo-shimmer">
+      <img src="images/logo-noza.png" alt="Noza" style="height:68px;width:auto;display:block;"/>
+    </span>
   </div>
   <div class="footer-copy">© 2026 Noza. Crédito inteligente para quem está construindo o futuro.</div>
 </footer>
 
 <script>
+  /* PHONE REVEAL */
+  const phoneSection = document.querySelector('.phone-section');
+  const phoneObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      phoneSection.classList.add('revealed');
+      phoneObs.disconnect();
+    }
+  }, { threshold: 0.3 });
+  phoneObs.observe(phoneSection);
+
   /* TABS */
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
