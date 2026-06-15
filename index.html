@@ -283,7 +283,8 @@
     /* ─── SPLIT dark ─── */
     .split{
       display:grid;grid-template-columns:1fr 1fr;
-      gap:1px;background:var(--border-dark);
+      gap:0;
+      background:var(--black);
     }
     .sb{
       background:var(--black);padding:80px 72px;
@@ -684,7 +685,7 @@
       .pillars,.mosaic,.tabs-section,.manifesto,.logo-area{padding:64px 24px}
       .pillars-grid,.mosaic-grid{grid-template-columns:1fr}
       .mc.wide{grid-column:span 1}
-      .split{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr;gap:0}
       .sb{padding:56px 24px;min-height:360px}
       .stats{grid-template-columns:1fr}
       .stat{padding:44px 24px}
