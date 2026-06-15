@@ -104,8 +104,14 @@
     .hero-badge:hover{border-color:rgba(255,255,255,0.5)}
     .hero-badge-name{font-weight:700}
     .hero-badge-arrow{
-      font-size:14px;color:rgba(255,255,255,0.45);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(255,255,255,0.45);
       margin-left:2px;
+    }
+    .hero-badge-arrow svg{
+      width:14px;height:14px;
+      stroke:currentColor;fill:none;
+      stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
     }
     .hero h1{
       font-size:clamp(52px,7.5vw,100px);
@@ -123,7 +129,7 @@
       font-style:italic;
     }
     .hero-actions{
-      display:flex;gap:16px;justify-content:center;
+      display:flex;flex-direction:row;gap:16px;justify-content:center;
       width:100%;max-width:680px;
     }
     .btn-solid{
@@ -183,6 +189,7 @@
     .pillars{
       background:var(--white);color:var(--black);
       padding:88px 80px;
+      text-align:center;
     }
     .pillars-eyebrow{
       font-size:11px;font-weight:700;letter-spacing:2.5px;
@@ -193,6 +200,7 @@
       font-size:clamp(28px,3.2vw,42px);font-weight:300;
       letter-spacing:-1.5px;line-height:1.12;
       margin-bottom:64px;max-width:560px;color:var(--black);
+      margin-left:auto;margin-right:auto;
     }
     .pillars-grid{
       display:grid;grid-template-columns:repeat(3,1fr);
@@ -202,6 +210,7 @@
     .pillar{
       background:var(--white);padding:40px 36px;
       display:flex;flex-direction:column;gap:16px;
+      align-items:center;text-align:center;
       transition:background .2s;
     }
     .pillar:hover{background:var(--off-white)}
@@ -227,7 +236,7 @@
     .pillar-link:hover{opacity:1;gap:10px}
 
     /* ─── MOSAIC dark ─── */
-    .mosaic{padding:88px 80px;background:var(--black)}
+    .mosaic{padding:88px 80px;background:var(--black);text-align:center}
     .mosaic-head{margin-bottom:52px}
     .mosaic-eyebrow{
       font-size:11px;font-weight:700;letter-spacing:2.5px;
@@ -237,6 +246,7 @@
     .mosaic-title{
       font-size:clamp(28px,3.2vw,42px);font-weight:300;
       letter-spacing:-1.5px;line-height:1.12;
+      margin-left:auto;margin-right:auto;
     }
     .mosaic-grid{
       display:grid;
@@ -337,6 +347,7 @@
     .stat{
       background:var(--white);padding:60px 56px;
       display:flex;flex-direction:column;gap:12px;
+      align-items:center;text-align:center;
     }
     .stat-num{
       font-size:72px;font-weight:300;letter-spacing:-4px;line-height:1;
@@ -355,20 +366,21 @@
     .tabs-section{
       padding:88px 80px;background:var(--white);color:var(--black);
       border-top:1px solid var(--border-light);
+      text-align:center;
     }
     .tabs-title{
       font-size:clamp(28px,3.2vw,42px);font-weight:300;
       letter-spacing:-1.5px;margin-bottom:44px;color:var(--black);
     }
     .tabs-nav{
-      display:flex;gap:0;margin-bottom:52px;
+      display:flex;justify-content:center;gap:0;margin-bottom:52px;
       border-bottom:1px solid var(--border-light);
     }
     .tab-btn{
       background:none;border:none;cursor:pointer;
       font-family:var(--font);font-size:14px;font-weight:500;
       color:rgba(0,0,0,.38);letter-spacing:.2px;
-      padding:14px 32px 14px 0;
+      padding:14px 20px;
       border-bottom:1.5px solid transparent;margin-bottom:-1px;
       transition:color .2s,border-color .2s;
     }
@@ -383,6 +395,7 @@
     .tc{
       background:var(--white);padding:36px 32px;
       display:flex;flex-direction:column;gap:14px;
+      align-items:center;text-align:center;
       transition:background .2s;
     }
     .tc:hover{background:var(--off-white)}
@@ -522,21 +535,23 @@
       nav{padding:0 24px}
       .nav-links{display:none}
       .hero{padding:110px 24px 80px}
-      .hero h1{font-size:clamp(40px,10vw,64px);letter-spacing:-1.5px}
-      .hero-actions{flex-direction:column;max-width:360px}
-      .btn-solid,.btn-hollow{flex:none}
+      .hero h1{font-size:clamp(38px,9vw,60px);letter-spacing:-1.5px}
+      /* MOBILE: botões empilhados */
+      .hero-actions{flex-direction:column;align-items:center;max-width:340px}
+      .btn-solid,.btn-hollow{width:100%;text-align:center}
       .pillars,.mosaic,.tabs-section,.manifesto,.logo-area{padding:64px 24px}
       .pillars-grid,.mosaic-grid{grid-template-columns:1fr}
       .mc.wide{grid-column:span 1}
       .split{grid-template-columns:1fr}
-      .sb{padding:56px 24px;min-height:380px}
+      .sb{padding:56px 24px;min-height:360px}
       .stats{grid-template-columns:1fr}
       .stat{padding:44px 24px}
+      .tabs-nav{justify-content:flex-start;overflow-x:auto;padding-bottom:2px}
       .tab-panel.active{grid-template-columns:1fr}
       .form-wrap{grid-template-columns:1fr}
       .form-left,.form-right{padding:64px 24px}
       .form-left{border-right:none;border-bottom:1px solid var(--border-light)}
-      footer{padding:40px 24px 28px}
+      footer{padding:40px 24px 28px;flex-direction:column;gap:10px}
     }
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{transition:none!important;animation:none!important}
@@ -567,7 +582,9 @@
   <a href="#plataforma" class="hero-badge">
     <span class="hero-badge-name">Plataforma educacional</span>
     <span>incluída em todo contrato</span>
-    <span class="hero-badge-arrow">↗</span>
+    <span class="hero-badge-arrow">
+      <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7,7 17,7 17,17"/></svg>
+    </span>
   </a>
 
   <h1>Uma experiência financeira<br/><span class="grad-text">extraordinária.</span></h1>
