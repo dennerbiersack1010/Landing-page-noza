@@ -1149,16 +1149,6 @@
 </footer>
 
 <script>
-  /* PHONE REVEAL */
-  const phoneSection = document.querySelector('.phone-section');
-  const phoneObs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      phoneSection.classList.add('revealed');
-      phoneObs.disconnect();
-    }
-  }, { threshold: 0.3 });
-  phoneObs.observe(phoneSection);
-
   /* TABS */
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
