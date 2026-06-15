@@ -537,28 +537,28 @@
     }
     .phone-stage{
       position:relative;
-      height:clamp(700px,100vw,1100px);
-      max-width:1400px;
+      height:clamp(800px,120vw,1300px);
+      max-width:1600px;
       margin:0 auto;
     }
     /* celular central */
     .phone-main{
       position:absolute;
       z-index:3;
-      width:clamp(380px,46vw,620px);
+      width:clamp(460px,56vw,760px);
       bottom:0;left:50%;
       transform:translateX(-50%);
     }
     .phone-main img{
       width:100%;height:auto;display:block;
-      border-radius:40px;
-      box-shadow:0 56px 110px rgba(0,0,0,0.85);
+      border-radius:44px;
+      box-shadow:0 60px 120px rgba(0,0,0,0.85);
     }
     /* fantasmas */
     .phone-ghost{
       position:absolute;
       bottom:0;
-      width:clamp(360px,43vw,590px);
+      width:clamp(440px,53vw,720px);
       z-index:2;
       opacity:0;
       transition:transform 2s cubic-bezier(0.22,1,0.36,1),
@@ -566,7 +566,7 @@
     }
     .phone-ghost img{
       width:100%;height:auto;display:block;
-      border-radius:36px;
+      border-radius:40px;
       filter:brightness(0.32);
       box-shadow:0 40px 80px rgba(0,0,0,0.65);
     }
@@ -578,13 +578,12 @@
       left:50%;
       transform:translateX(-50%);
     }
-    /* revelado: aparecem bastante mas movimento é lento e sutil */
     .phone-section.revealed .phone-ghost{ opacity:1 }
     .phone-section.revealed .phone-ghost-left{
-      transform:translateX(calc(-50% - clamp(140px,15vw,210px)));
+      transform:translateX(calc(-50% - clamp(160px,17vw,240px)));
     }
     .phone-section.revealed .phone-ghost-right{
-      transform:translateX(calc(-50% + clamp(140px,15vw,210px)));
+      transform:translateX(calc(-50% + clamp(160px,17vw,240px)));
     }
 
     /* ─── RESPONSIVE ─── */
@@ -598,14 +597,14 @@
       .btn-solid,.btn-hollow{width:100%;text-align:center}
       .phone-section{padding:72px 0 0}
       .phone-title{margin-bottom:48px;padding:0 24px}
-      .phone-stage{height:clamp(520px,130vw,800px)}
-      .phone-main{width:clamp(260px,74vw,380px)}
-      .phone-ghost{width:clamp(240px,70vw,360px)}
+      .phone-stage{height:clamp(600px,150vw,900px)}
+      .phone-main{width:clamp(300px,86vw,440px)}
+      .phone-ghost{width:clamp(280px,82vw,420px)}
       .phone-section.revealed .phone-ghost-left{
-        transform:translateX(calc(-50% - clamp(90px,12vw,140px)));
+        transform:translateX(calc(-50% - clamp(100px,14vw,160px)));
       }
       .phone-section.revealed .phone-ghost-right{
-        transform:translateX(calc(-50% + clamp(90px,12vw,140px)));
+        transform:translateX(calc(-50% + clamp(100px,14vw,160px)));
       }
       .pillars,.mosaic,.tabs-section,.manifesto,.logo-area{padding:64px 24px}
       .pillars-grid,.mosaic-grid{grid-template-columns:1fr}
