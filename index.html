@@ -543,7 +543,7 @@
     }
     .phone-stage{
       position:relative;
-      height:clamp(600px,90vw,1050px);
+      height:clamp(700px,105vw,1200px);
       max-width:1600px;
       margin:0 auto;
     }
@@ -551,7 +551,7 @@
     .phone-main{
       position:absolute;
       z-index:3;
-      width:clamp(460px,56vw,760px);
+      width:clamp(520px,64vw,860px);
       top:0;left:50%;
       transform:translateX(-50%);
     }
@@ -564,7 +564,7 @@
     .phone-ghost{
       position:absolute;
       top:40px;
-      width:clamp(320px,38vw,540px);
+      width:clamp(400px,48vw,660px);
       z-index:2;
       opacity:0;
       transition:transform 2s cubic-bezier(0.22,1,0.36,1),
@@ -586,10 +586,10 @@
     }
     .phone-section.revealed .phone-ghost{ opacity:1 }
     .phone-section.revealed .phone-ghost-left{
-      transform:translateX(calc(-50% - clamp(160px,17vw,240px)));
+      transform:translateX(calc(-50% - clamp(180px,20vw,280px)));
     }
     .phone-section.revealed .phone-ghost-right{
-      transform:translateX(calc(-50% + clamp(160px,17vw,240px)));
+      transform:translateX(calc(-50% + clamp(180px,20vw,280px)));
     }
 
     /* ─── RESPONSIVE ─── */
@@ -603,14 +603,14 @@
       .btn-solid,.btn-hollow{width:100%;text-align:center}
       .phone-section{padding:48px 0 0}
       .phone-title{margin-bottom:0;padding:0 24px}
-      .phone-stage{height:clamp(460px,115vw,700px)}
-      .phone-main{width:clamp(300px,86vw,440px)}
-      .phone-ghost{width:clamp(200px,58vw,300px)}
+      .phone-stage{height:clamp(520px,130vw,780px)}
+      .phone-main{width:clamp(340px,92vw,500px)}
+      .phone-ghost{width:clamp(260px,70vw,380px)}
       .phone-section.revealed .phone-ghost-left{
-        transform:translateX(calc(-50% - clamp(100px,14vw,160px)));
+        transform:translateX(calc(-50% - clamp(110px,16vw,170px)));
       }
       .phone-section.revealed .phone-ghost-right{
-        transform:translateX(calc(-50% + clamp(100px,14vw,160px)));
+        transform:translateX(calc(-50% + clamp(110px,16vw,170px)));
       }
       .pillars,.mosaic,.tabs-section,.manifesto,.logo-area{padding:64px 24px}
       .pillars-grid,.mosaic-grid{grid-template-columns:1fr}
