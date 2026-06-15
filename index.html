@@ -1,964 +1,944 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noza — Crédito Inteligente para Quem Está Construindo o Futuro</title>
-  <meta name="description" content="A Noza oferece crédito para universitários, empreendedores e profissionais que precisam de capital para crescer. Mais do que crédito: direção." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noza — Crédito inteligente para quem está construindo o futuro</title>
+  <meta name="description" content="Crédito para universitários, empreendedores e profissionais que querem crescer. Mais do que capital — entregamos direção."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-    :root {
-      --bg:        #0C0F12;
-      --bg-card:   #111418;
-      --bg-raised: #161B21;
-      --petrol:    #0E4D4B;
-      --petrol-lt: #156661;
-      --steel:     #5B6F85;
-      --silver:    #C7CDD3;
-      --ice:       #F7F9FB;
-      --border:    rgba(91,111,133,0.18);
-      --radius:    16px;
-      --font-display: 'Sora', sans-serif;
-      --font-body:    'Inter', sans-serif;
-    }
+    :root{
+      /* Paleta C6 exata */
+      --black:      #000000;
+      --off-black:  #0d0d0d;
+      --card-dark:  #111111;
+      --card-hover: #191919;
+      --white:      #ffffff;
+      --off-white:  #f5f5f5;
+      --gray-text:  rgba(255,255,255,0.55);
+      --gray-dark:  #888888;
+      --border-dark: rgba(255,255,255,0.09);
+      --border-light: rgba(0,0,0,0.1);
 
-    html { scroll-behavior: smooth; }
+      /* Gradiente headline — coral para amarelo mel (igual C6) */
+      --grad: linear-gradient(90deg, #E07B54 0%, #D4A843 100%);
 
-    body {
-      background: var(--bg);
-      color: var(--ice);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      --font: 'Montserrat', sans-serif;
+      --radius: 16px;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 48px;
-      background: rgba(12,15,18,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--ice);
-    }
-    .nav-logo span { color: var(--petrol-lt); }
-    .nav-cta {
-      background: var(--petrol);
-      color: var(--ice);
-      border: none;
-      border-radius: 50px;
-      padding: 11px 26px;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .nav-cta:hover { background: var(--petrol-lt); transform: translateY(-1px); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 100px 48px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; right: -200px;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(14,77,75,0.22) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--petrol-lt);
-      margin-bottom: 28px;
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(42px, 6vw, 80px);
-      font-weight: 800;
-      line-height: 1.07;
-      letter-spacing: -2px;
-      max-width: 800px;
-      margin-bottom: 28px;
-    }
-    .hero h1 em { font-style: normal; color: var(--petrol-lt); }
-    .hero-sub {
-      font-size: clamp(16px, 1.8vw, 20px);
-      color: var(--silver);
-      max-width: 520px;
-      margin-bottom: 48px;
-      font-weight: 400;
-      line-height: 1.7;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--petrol);
-      color: var(--ice);
-      border: none;
-      border-radius: 50px;
-      padding: 16px 36px;
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-primary:hover {
-      background: var(--petrol-lt);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(14,77,75,0.35);
-    }
-    .btn-ghost {
-      background: transparent;
-      color: var(--silver);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 16px 36px;
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-ghost:hover { border-color: var(--steel); color: var(--ice); }
-
-    /* ── DIVIDER ── */
-    .divider { height: 1px; background: var(--border); margin: 0 48px; }
-
-    /* ── SECTION BASE ── */
-    section { padding: 100px 48px; }
-    .section-eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--petrol-lt);
-      margin-bottom: 20px;
-      display: block;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 4vw, 54px);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-    }
-    .section-body {
-      font-size: 18px;
-      color: var(--silver);
-      max-width: 540px;
-      line-height: 1.75;
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--black);color:var(--white);
+      font-family:var(--font);font-size:16px;line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      font-weight:400;
     }
 
-    /* ── STATS BAR (números animados) ── */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
+    /* ─── NAV ─── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:300;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 48px;height:68px;
+      background:rgba(0,0,0,0.88);
+      backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
+      border-bottom:1px solid var(--border-dark);
     }
-    .stat-item {
-      background: var(--bg);
-      padding: 52px 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .nav-logo{
+      font-size:16px;font-weight:700;letter-spacing:2px;
+      color:var(--white);text-decoration:none;
+      text-transform:uppercase;
     }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 64px;
-      font-weight: 800;
-      letter-spacing: -3px;
-      color: var(--ice);
-      line-height: 1;
-      display: flex;
-      align-items: baseline;
-      gap: 2px;
+    .nav-links{
+      display:flex;align-items:center;gap:36px;
+      position:absolute;left:50%;transform:translateX(-50%);
     }
-    .stat-suffix {
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--petrol-lt);
-      letter-spacing: -1px;
+    .nav-links a{
+      font-size:13px;font-weight:500;letter-spacing:.3px;
+      color:rgba(255,255,255,0.6);text-decoration:none;
+      transition:color .2s;
     }
-    .stat-label {
-      font-size: 14px;
-      color: var(--silver);
-      font-weight: 400;
-      max-width: 200px;
-      line-height: 1.5;
+    .nav-links a:hover{color:var(--white)}
+    .nav-right{display:flex;align-items:center;gap:12px}
+    .nav-btn-solid{
+      background:var(--white);color:var(--black);
+      border:none;border-radius:50px;
+      padding:10px 24px;font-family:var(--font);
+      font-size:13px;font-weight:700;letter-spacing:.3px;
+      cursor:pointer;text-decoration:none;
+      transition:opacity .2s;
     }
-
-    /* ── SOLUTIONS ── */
-    .solutions { background: var(--bg); }
-    .solutions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      margin-top: 64px;
+    .nav-btn-solid:hover{opacity:.85}
+    .nav-hamburger{
+      background:none;border:none;cursor:pointer;
+      display:flex;flex-direction:column;gap:5px;padding:6px;
     }
-    .solution-card {
-      background: var(--bg-card);
-      padding: 40px 36px;
-      transition: background 0.2s;
-    }
-    .solution-card:hover { background: var(--bg-raised); }
-
-    /* SVG icon container */
-    .solution-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(14,77,75,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-    .solution-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--petrol-lt);
-      fill: none;
-      stroke-width: 1.6;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .solution-card h3 {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-    }
-    .solution-card p { font-size: 14px; color: var(--silver); line-height: 1.65; }
-
-    /* ── PLATFORM ── */
-    .platform {
-      background: var(--bg-card);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .platform-topics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 40px;
-    }
-    .topic-pill {
-      background: var(--bg-raised);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 10px 18px;
-      font-size: 13px;
-      color: var(--silver);
-      font-weight: 500;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .topic-pill:hover { border-color: var(--petrol-lt); color: var(--ice); }
-
-    .platform-visual {
-      background: var(--bg-raised);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .platform-visual-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--petrol-lt);
-    }
-    .platform-visual h4 {
-      font-family: var(--font-display);
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-      line-height: 1.3;
-    }
-    .platform-visual p { font-size: 14px; color: var(--silver); line-height: 1.7; }
-
-    /* barras animadas */
-    .visual-bar { margin-top: 8px; display: flex; flex-direction: column; gap: 16px; }
-    .visual-bar-row { display: flex; align-items: center; gap: 14px; }
-    .visual-bar-name {
-      width: 90px;
-      font-size: 12px;
-      color: var(--silver);
-      flex-shrink: 0;
-    }
-    .visual-bar-track {
-      flex: 1;
-      height: 5px;
-      background: rgba(91,111,133,0.15);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .visual-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--petrol), var(--petrol-lt));
-      border-radius: 3px;
-      width: 0%;
-      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .visual-bar-pct {
-      width: 34px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--petrol-lt);
-      text-align: right;
-      flex-shrink: 0;
+    .nav-hamburger span{
+      display:block;width:20px;height:1.5px;
+      background:var(--white);border-radius:2px;
     }
 
-    /* ── PHOTO PLACEHOLDER ── */
-    .photo-section {
-      padding: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 480px;
+    /* ─── HERO ─── */
+    .hero{
+      min-height:100vh;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      text-align:center;
+      padding:140px 48px 100px;
+      position:relative;background:var(--black);
     }
-    .photo-slot {
-      background: var(--bg-raised);
-      border: 1px dashed rgba(91,111,133,0.25);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      color: var(--steel);
-      font-size: 13px;
-      text-align: center;
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:10px;
+      border:1px solid rgba(255,255,255,0.22);
+      border-radius:50px;
+      padding:9px 20px;
+      font-size:13px;font-weight:500;letter-spacing:.3px;
+      color:var(--white);margin-bottom:52px;
+      text-decoration:none;transition:border-color .2s;
     }
-    .photo-slot img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none; /* visível quando src for definido */
+    .hero-badge:hover{border-color:rgba(255,255,255,0.5)}
+    .hero-badge-name{font-weight:700}
+    .hero-badge-arrow{
+      font-size:14px;color:rgba(255,255,255,0.45);
+      margin-left:2px;
     }
-    .photo-slot svg {
-      width: 36px; height: 36px;
-      stroke: var(--steel);
-      fill: none;
-      stroke-width: 1.4;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      opacity: 0.5;
+    .hero h1{
+      font-size:clamp(52px,7.5vw,100px);
+      font-weight:300; /* fino — exatamente como C6 */
+      line-height:1.04;letter-spacing:-2.5px;
+      max-width:960px;margin-bottom:56px;
     }
-    .photo-slot span { opacity: 0.5; }
-    .photo-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 24px 28px;
-      background: linear-gradient(transparent, rgba(12,15,18,0.92));
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ice);
-      letter-spacing: -0.3px;
-      pointer-events: none;
+    /* gradiente no texto de destaque */
+    .grad-text{
+      background:var(--grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      font-weight:300;
+      font-style:italic;
+    }
+    .hero-actions{
+      display:flex;gap:16px;justify-content:center;
+      width:100%;max-width:680px;
+    }
+    .btn-solid{
+      flex:1;
+      background:var(--white);color:var(--black);
+      border:1px solid var(--white);border-radius:50px;
+      padding:18px 40px;font-family:var(--font);
+      font-size:15px;font-weight:600;letter-spacing:.3px;
+      cursor:pointer;text-decoration:none;text-align:center;
+      transition:opacity .2s,transform .15s;
+    }
+    .btn-solid:hover{opacity:.87;transform:translateY(-1px)}
+    .btn-hollow{
+      flex:1;
+      background:transparent;color:var(--white);
+      border:1px solid rgba(255,255,255,0.28);border-radius:50px;
+      padding:18px 40px;font-family:var(--font);
+      font-size:15px;font-weight:500;letter-spacing:.3px;
+      cursor:pointer;text-decoration:none;text-align:center;
+      transition:border-color .2s;
+    }
+    .btn-hollow:hover{border-color:rgba(255,255,255,0.65)}
+
+    /* scroll indicator */
+    .hero-scroll{
+      position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+      width:32px;height:1px;background:rgba(255,255,255,0.25);
+    }
+    .hero-scroll::after{
+      content:'';display:block;width:8px;height:1px;
+      background:var(--white);
+      animation:scrollSlide 2s infinite;
+    }
+    @keyframes scrollSlide{
+      0%{transform:translateX(0)}50%{transform:translateX(24px)}100%{transform:translateX(0)}
     }
 
-    /* ── AUDIENCE ── */
-    .audience {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      padding: 0;
+    /* ─── HERO IMAGE ─── */
+    .hero-image{
+      width:100%;aspect-ratio:16/7;overflow:hidden;
+      position:relative;background:var(--card-dark);
     }
-    .audience-block { background: var(--bg); padding: 80px 64px; }
-    .audience-block:first-child { background: var(--bg-card); }
-    .audience-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--petrol-lt);
-      border: 1px solid rgba(14,77,75,0.3);
-      border-radius: 50px;
-      padding: 5px 14px;
-      margin-bottom: 28px;
+    .hero-image img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-image-ph{
+      position:absolute;inset:0;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:14px;
     }
-    .audience-block h2 {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 3vw, 40px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      line-height: 1.1;
-      margin-bottom: 20px;
+    .hero-image-ph svg{
+      width:40px;height:40px;opacity:.15;
+      stroke:var(--white);fill:none;
+      stroke-width:1;stroke-linecap:round;stroke-linejoin:round;
     }
-    .audience-block p { font-size: 16px; color: var(--silver); line-height: 1.75; }
+    .hero-image-ph p{font-size:12px;color:rgba(255,255,255,.18);letter-spacing:.5px}
 
-    /* ── MANIFESTO ── */
-    .manifesto {
-      background: var(--petrol);
-      text-align: center;
-      padding: 120px 48px;
+    /* ─── SEÇÃO BRANCA — Pillars ─── */
+    .pillars{
+      background:var(--white);color:var(--black);
+      padding:88px 80px;
     }
-    .manifesto h2 {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 5vw, 64px);
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      max-width: 760px;
-      margin: 0 auto 24px;
+    .pillars-eyebrow{
+      font-size:11px;font-weight:700;letter-spacing:2.5px;
+      text-transform:uppercase;color:var(--gray-dark);
+      margin-bottom:20px;display:block;
     }
-    .manifesto p {
-      font-size: 18px;
-      color: rgba(247,249,251,0.72);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.7;
+    .pillars-title{
+      font-size:clamp(28px,3.2vw,42px);font-weight:300;
+      letter-spacing:-1.5px;line-height:1.12;
+      margin-bottom:64px;max-width:560px;color:var(--black);
+    }
+    .pillars-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1px;background:var(--border-light);
+      border:1px solid var(--border-light);
+    }
+    .pillar{
+      background:var(--white);padding:40px 36px;
+      display:flex;flex-direction:column;gap:16px;
+      transition:background .2s;
+    }
+    .pillar:hover{background:var(--off-white)}
+    .pillar-icon{
+      width:40px;height:40px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .pillar-icon svg{
+      width:24px;height:24px;stroke:var(--black);fill:none;
+      stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;
+    }
+    .pillar h3{
+      font-size:17px;font-weight:500;letter-spacing:-.3px;
+      line-height:1.35;color:var(--black);
+    }
+    .pillar p{font-size:13px;color:var(--gray-dark);line-height:1.65;flex:1}
+    .pillar-link{
+      font-size:13px;font-weight:600;color:var(--black);
+      text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+      opacity:.5;transition:opacity .2s,gap .2s;
+      letter-spacing:.2px;
+    }
+    .pillar-link:hover{opacity:1;gap:10px}
+
+    /* ─── MOSAIC dark ─── */
+    .mosaic{padding:88px 80px;background:var(--black)}
+    .mosaic-head{margin-bottom:52px}
+    .mosaic-eyebrow{
+      font-size:11px;font-weight:700;letter-spacing:2.5px;
+      text-transform:uppercase;color:rgba(255,255,255,.35);
+      margin-bottom:16px;display:block;
+    }
+    .mosaic-title{
+      font-size:clamp(28px,3.2vw,42px);font-weight:300;
+      letter-spacing:-1.5px;line-height:1.12;
+    }
+    .mosaic-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .mc{
+      background:var(--card-dark);border-radius:12px;
+      overflow:hidden;position:relative;
+      min-height:260px;display:flex;flex-direction:column;
+      transition:background .25s,transform .25s;
+    }
+    .mc:hover{background:var(--card-hover);transform:translateY(-3px)}
+    .mc.wide{grid-column:span 2}
+    .mc-media{
+      flex:1;min-height:140px;
+      background:linear-gradient(150deg,#181818,#0e0e0e);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    .mc-media img{width:100%;height:100%;object-fit:cover;display:none}
+    .mc-media-icon{
+      /* SVG inline elegante — sem emoji */
+      width:36px;height:36px;opacity:.12;
+      stroke:var(--white);fill:none;
+      stroke-width:1;stroke-linecap:round;stroke-linejoin:round;
+    }
+    .mc-body{padding:22px 24px 26px}
+    .mc-tag{
+      font-size:10px;font-weight:700;letter-spacing:2px;
+      text-transform:uppercase;
+      background:var(--grad);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;
+      margin-bottom:8px;display:block;
+    }
+    .mc h3{font-size:16px;font-weight:500;letter-spacing:-.2px;margin-bottom:6px}
+    .mc p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:14px}
+    .mc-link{
+      font-size:12px;font-weight:600;color:var(--white);
+      text-decoration:none;display:inline-flex;align-items:center;gap:5px;
+      opacity:.45;transition:opacity .2s,gap .2s;letter-spacing:.2px;
+    }
+    .mc-link:hover{opacity:1;gap:9px}
+
+    /* ─── SPLIT dark ─── */
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:1px;background:var(--border-dark);
+    }
+    .sb{
+      background:var(--black);padding:80px 72px;
+      position:relative;overflow:hidden;
+      min-height:500px;display:flex;flex-direction:column;justify-content:flex-end;
+      transition:background .2s;
+    }
+    .sb:hover{background:#080808}
+    .sb-img{
+      position:absolute;inset:0;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .sb-img img{width:100%;height:100%;object-fit:cover;display:none}
+    .sb-img-ph{
+      width:64px;height:64px;opacity:.06;
+      stroke:var(--white);fill:none;
+      stroke-width:.8;stroke-linecap:round;stroke-linejoin:round;
+    }
+    .sb-body{position:relative;z-index:2}
+    .sb-tag{
+      font-size:10px;font-weight:700;letter-spacing:2.5px;
+      text-transform:uppercase;
+      background:var(--grad);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;
+      margin-bottom:18px;display:block;
+    }
+    .sb h2{
+      font-size:clamp(24px,2.6vw,36px);font-weight:300;
+      letter-spacing:-1px;line-height:1.12;margin-bottom:16px;
+    }
+    .sb p{
+      font-size:14px;color:rgba(255,255,255,.5);
+      line-height:1.75;margin-bottom:30px;max-width:380px;
+    }
+    .sb-link{
+      font-size:14px;font-weight:600;color:var(--white);
+      text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+      transition:gap .2s;letter-spacing:.2px;
+    }
+    .sb-link:hover{gap:14px}
+
+    /* ─── SEÇÃO BRANCA — Stats ─── */
+    .stats{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1px;background:var(--border-light);
+      background-color:var(--border-light);
+    }
+    .stat{
+      background:var(--white);padding:60px 56px;
+      display:flex;flex-direction:column;gap:12px;
+    }
+    .stat-num{
+      font-size:72px;font-weight:300;letter-spacing:-4px;line-height:1;
+      color:var(--black);display:flex;align-items:baseline;gap:2px;
+    }
+    .stat-sfx{
+      font-size:32px;font-weight:300;
+      background:var(--grad);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;
+      letter-spacing:-1px;
+    }
+    .stat-desc{font-size:13px;color:var(--gray-dark);line-height:1.6;max-width:200px;font-weight:400}
+
+    /* ─── TABS branca ─── */
+    .tabs-section{
+      padding:88px 80px;background:var(--white);color:var(--black);
+      border-top:1px solid var(--border-light);
+    }
+    .tabs-title{
+      font-size:clamp(28px,3.2vw,42px);font-weight:300;
+      letter-spacing:-1.5px;margin-bottom:44px;color:var(--black);
+    }
+    .tabs-nav{
+      display:flex;gap:0;margin-bottom:52px;
+      border-bottom:1px solid var(--border-light);
+    }
+    .tab-btn{
+      background:none;border:none;cursor:pointer;
+      font-family:var(--font);font-size:14px;font-weight:500;
+      color:rgba(0,0,0,.38);letter-spacing:.2px;
+      padding:14px 32px 14px 0;
+      border-bottom:1.5px solid transparent;margin-bottom:-1px;
+      transition:color .2s,border-color .2s;
+    }
+    .tab-btn.active{color:var(--black);border-bottom-color:var(--black);font-weight:700}
+    .tab-btn:hover:not(.active){color:rgba(0,0,0,.65)}
+    .tab-panel{display:none}
+    .tab-panel.active{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1px;background:var(--border-light);
+      border:1px solid var(--border-light);
+    }
+    .tc{
+      background:var(--white);padding:36px 32px;
+      display:flex;flex-direction:column;gap:14px;
+      transition:background .2s;
+    }
+    .tc:hover{background:var(--off-white)}
+    .tc-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+    .tc-icon svg{
+      width:22px;height:22px;stroke:var(--black);fill:none;
+      stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;
+    }
+    .tc h3{font-size:16px;font-weight:500;letter-spacing:-.2px;color:var(--black)}
+    .tc p{font-size:13px;color:var(--gray-dark);line-height:1.65;flex:1}
+    .tc-link{
+      font-size:13px;font-weight:600;color:var(--black);opacity:.4;
+      text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+      transition:opacity .2s,gap .2s;letter-spacing:.2px;
+    }
+    .tc-link:hover{opacity:1;gap:10px}
+
+    /* ─── MANIFESTO dark ─── */
+    .manifesto{
+      padding:140px 80px;text-align:center;
+      background:var(--black);
+      border-top:1px solid var(--border-dark);
+    }
+    .manifesto h2{
+      font-size:clamp(40px,6.5vw,88px);
+      font-weight:300;letter-spacing:-3.5px;line-height:1.03;
+      max-width:900px;margin:0 auto 28px;
+    }
+    .manifesto h2 .grad-text{font-weight:300;font-style:italic}
+    .manifesto p{
+      font-size:17px;font-weight:300;
+      color:rgba(255,255,255,.45);
+      max-width:440px;margin:0 auto 56px;line-height:1.75;
     }
 
-    /* ── LOGO PLACEHOLDER ── */
-    .logo-section {
-      padding: 80px 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      border-top: 1px solid var(--border);
+    /* ─── FORM branca ─── */
+    .form-wrap{
+      display:grid;grid-template-columns:1fr 1fr;
+      border-top:1px solid var(--border-light);
     }
-    .logo-placeholder {
-      width: 160px;
-      height: 64px;
-      border: 1px dashed rgba(91,111,133,0.3);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: var(--steel);
-      letter-spacing: 1px;
-      opacity: 0.6;
+    .form-left{
+      background:var(--off-white);padding:88px 80px;
+      border-right:1px solid var(--border-light);
+      color:var(--black);
     }
-    .logo-placeholder img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: none;
+    .form-left-tag{
+      font-size:11px;font-weight:700;letter-spacing:2.5px;
+      text-transform:uppercase;color:var(--gray-dark);
+      margin-bottom:20px;display:block;
     }
+    .form-left h2{
+      font-size:clamp(28px,3vw,44px);font-weight:300;
+      letter-spacing:-1.5px;line-height:1.1;
+      margin-bottom:18px;color:var(--black);
+    }
+    .form-left p{
+      font-size:15px;color:var(--gray-dark);
+      line-height:1.8;margin-bottom:44px;font-weight:400;
+    }
+    .trust-list{display:flex;flex-direction:column;gap:14px}
+    .trust-item{
+      display:flex;align-items:center;gap:14px;
+      font-size:13px;color:rgba(0,0,0,.5);font-weight:400;
+    }
+    .trust-dot{
+      width:5px;height:5px;border-radius:50%;
+      background:var(--black);flex-shrink:0;opacity:.3;
+    }
+    .form-right{
+      background:var(--white);padding:88px 80px;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .form-fields{display:flex;flex-direction:column;gap:14px}
+    .form-fields label{
+      display:flex;flex-direction:column;gap:7px;
+      font-size:12px;font-weight:600;letter-spacing:.5px;
+      text-transform:uppercase;color:rgba(0,0,0,.38);
+    }
+    .form-fields input,
+    .form-fields select{
+      background:var(--off-white);
+      border:1px solid var(--border-light);
+      border-radius:8px;padding:14px 16px;
+      font-family:var(--font);font-size:14px;
+      color:var(--black);font-weight:400;
+      outline:none;transition:border-color .2s;
+      appearance:none;-webkit-appearance:none;
+    }
+    .form-fields input::placeholder{color:rgba(0,0,0,.25)}
+    .form-fields input:focus,
+    .form-fields select:focus{border-color:rgba(0,0,0,.4)}
+    .form-submit{
+      background:var(--black);color:var(--white);
+      border:none;border-radius:50px;padding:17px;
+      font-family:var(--font);font-size:14px;font-weight:700;
+      letter-spacing:.5px;text-transform:uppercase;
+      cursor:pointer;margin-top:8px;
+      transition:opacity .2s,transform .15s;
+    }
+    .form-submit:hover{opacity:.82;transform:translateY(-1px)}
 
-    /* ── FORM ── */
-    .form-section {
-      background: var(--bg-card);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+    /* ─── LOGO AREA ─── */
+    .logo-area{
+      background:var(--white);color:var(--black);
+      padding:64px 80px;
+      border-top:1px solid var(--border-light);
+      display:flex;flex-direction:column;align-items:center;gap:14px;
     }
-    .form-info h2 {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 3.5vw, 50px);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 16px;
+    .logo-box{
+      height:56px;display:flex;align-items:center;
+      justify-content:center;
     }
-    .form-info p {
-      font-size: 16px;
-      color: var(--silver);
-      line-height: 1.75;
-      margin-bottom: 32px;
+    .logo-box img{max-height:56px;max-width:220px;object-fit:contain;display:none}
+    .logo-box-ph{
+      font-size:13px;letter-spacing:3px;font-weight:300;
+      color:rgba(0,0,0,.25);text-transform:uppercase;
+      border:1px dashed rgba(0,0,0,.15);padding:14px 32px;border-radius:8px;
     }
-    .form-trust { display: flex; flex-direction: column; gap: 12px; }
-    .form-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--silver);
-    }
-    .trust-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--petrol-lt);
-      flex-shrink: 0;
-    }
-    .form-box {
-      background: var(--bg-raised);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 44px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .form-box label {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--silver);
-      letter-spacing: 0.3px;
-    }
-    .form-box input,
-    .form-box select {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-      font-family: var(--font-body);
-      font-size: 15px;
-      color: var(--ice);
-      outline: none;
-      transition: border-color 0.2s;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .form-box input::placeholder { color: rgba(199,205,211,0.35); }
-    .form-box input:focus,
-    .form-box select:focus { border-color: var(--petrol-lt); }
-    .form-submit {
-      background: var(--petrol);
-      color: var(--ice);
-      border: none;
-      border-radius: 50px;
-      padding: 17px;
-      font-family: var(--font-body);
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 6px;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      letter-spacing: 0.2px;
-    }
-    .form-submit:hover {
-      background: var(--petrol-lt);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 28px rgba(14,77,75,0.35);
-    }
+    .logo-tagline{font-size:12px;color:rgba(0,0,0,.3);letter-spacing:.5px;font-weight:400}
 
-    /* ── FOOTER ── */
-    footer {
-      padding: 60px 48px 40px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
+    /* ─── FOOTER ─── */
+    footer{
+      background:var(--black);
+      padding:48px 80px 36px;
+      border-top:1px solid var(--border-dark);
+      display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:16px;
     }
-    .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--ice); }
-    .footer-logo span { color: var(--petrol-lt); }
-    .footer-copy { font-size: 13px; color: var(--steel); }
+    .footer-brand{
+      font-size:13px;font-weight:700;letter-spacing:3px;
+      text-transform:uppercase;color:var(--white);
+    }
+    .footer-copy{font-size:12px;color:rgba(255,255,255,.25);font-weight:300;letter-spacing:.3px}
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 18px 24px; }
-      .hero { padding: 80px 24px 64px; }
-      section { padding: 72px 24px; }
-      .divider { margin: 0 24px; }
-      .stats-bar { grid-template-columns: 1fr; }
-      .stat-item { padding: 36px 24px; }
-      .stat-number { font-size: 52px; }
-      .platform { grid-template-columns: 1fr; gap: 40px; }
-      .platform-topics { grid-template-columns: 1fr 1fr; }
-      .photo-section { grid-template-columns: 1fr; min-height: auto; }
-      .photo-slot { min-height: 240px; }
-      .audience { grid-template-columns: 1fr; }
-      .audience-block { padding: 56px 24px; }
-      .form-section { grid-template-columns: 1fr; gap: 40px; }
-      .form-box { padding: 32px 24px; }
-      footer { flex-direction: column; align-items: flex-start; padding: 40px 24px 32px; }
-      .solutions-grid { grid-template-columns: 1fr; }
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:960px){
+      nav{padding:0 24px}
+      .nav-links{display:none}
+      .hero{padding:110px 24px 80px}
+      .hero h1{font-size:clamp(40px,10vw,64px);letter-spacing:-1.5px}
+      .hero-actions{flex-direction:column;max-width:360px}
+      .btn-solid,.btn-hollow{flex:none}
+      .pillars,.mosaic,.tabs-section,.manifesto,.logo-area{padding:64px 24px}
+      .pillars-grid,.mosaic-grid{grid-template-columns:1fr}
+      .mc.wide{grid-column:span 1}
+      .split{grid-template-columns:1fr}
+      .sb{padding:56px 24px;min-height:380px}
+      .stats{grid-template-columns:1fr}
+      .stat{padding:44px 24px}
+      .tab-panel.active{grid-template-columns:1fr}
+      .form-wrap{grid-template-columns:1fr}
+      .form-left,.form-right{padding:64px 24px}
+      .form-left{border-right:none;border-bottom:1px solid var(--border-light)}
+      footer{padding:40px 24px 28px}
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; animation: none !important; }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{transition:none!important;animation:none!important}
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ─── NAV ─── -->
 <nav>
-  <div class="nav-logo">NO<span>ZA</span></div>
-  <a href="#solicitar" class="nav-cta">Solicitar análise</a>
+  <a href="#" class="nav-logo">NOZA</a>
+  <div class="nav-links">
+    <a href="#solucoes">Soluções</a>
+    <a href="#para-quem">Para quem</a>
+    <a href="#plataforma">Plataforma</a>
+    <a href="#solicitar">Contato</a>
+  </div>
+  <div class="nav-right">
+    <a href="#solicitar" class="nav-btn-solid">Solicitar análise</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- ─── HERO ─── -->
 <section class="hero">
-  <span class="hero-eyebrow">Crédito inteligente</span>
-  <h1>Crédito que impulsiona.<br/><em>Conhecimento</em><br/>que acelera.</h1>
-  <p class="hero-sub">A oportunidade que o seu negócio precisava para crescer. Mais do que crédito — entregamos direção.</p>
+  <a href="#plataforma" class="hero-badge">
+    <span class="hero-badge-name">Plataforma educacional</span>
+    <span>incluída em todo contrato</span>
+    <span class="hero-badge-arrow">↗</span>
+  </a>
+
+  <h1>Uma experiência financeira<br/><span class="grad-text">extraordinária.</span></h1>
+
   <div class="hero-actions">
-    <a href="#solicitar" class="btn-primary">Solicitar minha análise →</a>
-    <a href="#solucoes" class="btn-ghost">Ver soluções</a>
+    <a href="#solicitar" class="btn-solid">Solicitar análise</a>
+    <a href="#solucoes" class="btn-hollow">Explorar soluções</a>
+  </div>
+
+  <div class="hero-scroll"></div>
+</section>
+
+<!-- ─── HERO IMAGE ─── -->
+<div class="hero-image">
+  <!-- Inserir foto: colocar src e mudar display para block -->
+  <img src="" alt="Noza — crédito para empreendedores" style="display:none"/>
+  <div class="hero-image-ph">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+    <p>FOTO PRINCIPAL — FULL WIDTH</p>
+  </div>
+</div>
+
+<!-- ─── PILLARS — fundo branco ─── -->
+<section class="pillars" id="solucoes">
+  <span class="pillars-eyebrow">O que a Noza oferece</span>
+  <h2 class="pillars-title">Tudo que o seu negócio precisa. Em uma só plataforma.</h2>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3>Crédito para transformar ideias em negócios</h3>
+      <p>Capital para universitários, empreendedores e profissionais que precisam de recursos para crescer.</p>
+      <a href="#solicitar" class="pillar-link">Solicitar análise →</a>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <h3>Plataforma educacional exclusiva para clientes</h3>
+      <p>Branding, vendas, marketing, gestão e estratégia para empreendedores crescerem com segurança.</p>
+      <a href="#plataforma" class="pillar-link">Conhecer plataforma →</a>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h3>Atendimento especializado para o seu setor</h3>
+      <p>Um especialista entende seu projeto e apresenta as melhores opções. Sem burocracia.</p>
+      <a href="#solicitar" class="pillar-link">Falar com especialista →</a>
+    </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- STATS — números animados -->
-<div class="stats-bar" id="stats-bar">
-  <div class="stat-item">
-    <div class="stat-number">
-      <span class="count-up" data-target="9" data-suffix="+">0</span><span class="stat-suffix">+</span>
-    </div>
-    <div class="stat-label">soluções de crédito disponíveis</div>
+<!-- ─── MOSAIC — fundo preto ─── -->
+<section class="mosaic">
+  <div class="mosaic-head">
+    <span class="mosaic-eyebrow">Soluções de crédito</span>
+    <h2 class="mosaic-title">Para cada etapa<br/>do seu negócio.</h2>
   </div>
-  <div class="stat-item">
-    <div class="stat-number">
-      <span class="count-up" data-target="2" data-suffix="">0</span><span class="stat-suffix">em1</span>
-    </div>
-    <div class="stat-label">crédito + plataforma de educação empresarial</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">
-      <span class="count-up" data-target="100" data-suffix="">0</span><span class="stat-suffix">%</span>
-    </div>
-    <div class="stat-label">focado em quem está construindo o futuro</div>
-  </div>
-</div>
+  <div class="mosaic-grid">
 
-<div class="divider"></div>
-
-<!-- PHOTO SECTION — placeholder para fotos reais -->
-<div class="photo-section">
-  <div class="photo-slot">
-    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-    <span>Inserir foto aqui<br/>Sugestão: ambiente profissional / empreendedor</span>
-    <div class="photo-caption">Crédito que transforma ideias em negócios.</div>
-  </div>
-  <div class="photo-slot">
-    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-    <span>Inserir foto aqui<br/>Sugestão: universitário / crescimento</span>
-    <div class="photo-caption">Seu futuro não precisa esperar.</div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- SOLUTIONS -->
-<section class="solutions" id="solucoes">
-  <span class="section-eyebrow">Para onde vai o capital</span>
-  <h2 class="section-title">Crédito para quem quer<br/>construir o próximo passo.</h2>
-  <p class="section-body">Seja para abrir uma empresa, expandir uma operação ou estruturar um projeto — a Noza tem uma solução.</p>
-
-  <div class="solutions-grid">
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/><line x1="12" y1="1" x2="12" y2="3"/></svg>
+    <div class="mc wide">
+      <div class="mc-media">
+        <img src="" alt="Capital de giro"/>
+        <svg class="mc-media-icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       </div>
+      <div class="mc-body">
+        <span class="mc-tag">Operação</span>
+        <h3>Capital de giro</h3>
+        <p>Mantenha sua operação rodando sem comprometer o caixa.</p>
+        <a href="#solicitar" class="mc-link">Solicitar →</a>
+      </div>
+    </div>
+
+    <div class="mc">
+      <div class="mc-media">
+        <img src="" alt="Expansão"/>
+        <svg class="mc-media-icon" viewBox="0 0 24 24"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg>
+      </div>
+      <div class="mc-body">
+        <span class="mc-tag">Crescimento</span>
+        <h3>Expansão de negócios</h3>
+        <p>Abra novas unidades. Entre em novos mercados.</p>
+        <a href="#solicitar" class="mc-link">Solicitar →</a>
+      </div>
+    </div>
+
+    <div class="mc">
+      <div class="mc-media">
+        <img src="" alt="Equipamentos"/>
+        <svg class="mc-media-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      </div>
+      <div class="mc-body">
+        <span class="mc-tag">Infraestrutura</span>
+        <h3>Equipamentos</h3>
+        <p>Modernize a produção sem imobilizar o giro.</p>
+        <a href="#solicitar" class="mc-link">Solicitar →</a>
+      </div>
+    </div>
+
+    <div class="mc">
+      <div class="mc-media">
+        <img src="" alt="Marketing"/>
+        <svg class="mc-media-icon" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <div class="mc-body">
+        <span class="mc-tag">Aquisição</span>
+        <h3>Marketing e vendas</h3>
+        <p>Invista em tráfego e time comercial.</p>
+        <a href="#solicitar" class="mc-link">Solicitar →</a>
+      </div>
+    </div>
+
+    <div class="mc">
+      <div class="mc-media">
+        <img src="" alt="Equipe"/>
+        <svg class="mc-media-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="mc-body">
+        <span class="mc-tag">Pessoas</span>
+        <h3>Contratação de equipe</h3>
+        <p>Monte o time que o seu projeto exige.</p>
+        <a href="#solicitar" class="mc-link">Solicitar →</a>
+      </div>
+    </div>
+
+    <div class="mc">
+      <div class="mc-media">
+        <img src="" alt="Universitários"/>
+        <svg class="mc-media-icon" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div class="mc-body">
+        <span class="mc-tag">Universitários</span>
+        <h3>Empreender antes da formatura</h3>
+        <p>Grandes empresas nascem dentro da universidade.</p>
+        <a href="#solicitar" class="mc-link">Solicitar →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── SPLIT — fundo preto ─── -->
+<div class="split" id="para-quem">
+  <div class="sb">
+    <div class="sb-img">
+      <img src="" alt="Universitários empreendedores"/>
+      <svg class="sb-img-ph" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    </div>
+    <div class="sb-body">
+      <span class="sb-tag">Para universitários</span>
+      <h2>Seu futuro não precisa esperar a formatura.</h2>
+      <p>A Noza une crédito, educação e desenvolvimento profissional para quem quer construir algo próprio antes do mercado.</p>
+      <a href="#solicitar" class="sb-link">Quero começar agora →</a>
+    </div>
+  </div>
+  <div class="sb">
+    <div class="sb-img">
+      <img src="" alt="Empreendedores"/>
+      <svg class="sb-img-ph" viewBox="0 0 24 24"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg>
+    </div>
+    <div class="sb-body">
+      <span class="sb-tag">Para empreendedores</span>
+      <h2>Cresça sem frear seus planos.</h2>
+      <p>Novo equipamento. Nova unidade. Mais equipe. Toda empresa chega a um momento em que crescer exige investimento. A Noza foi criada para esse momento.</p>
+      <a href="#solicitar" class="sb-link">Quero avançar →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── STATS — fundo branco ─── -->
+<div class="stats" id="stats-bar">
+  <div class="stat">
+    <div class="stat-num">
+      <span class="count-up" data-target="9">0</span><span class="stat-sfx">+</span>
+    </div>
+    <div class="stat-desc">soluções de crédito disponíveis</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">
+      <span class="count-up" data-target="2">0</span><span class="stat-sfx">em1</span>
+    </div>
+    <div class="stat-desc">crédito + educação empresarial na mesma contratação</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">
+      <span class="count-up" data-target="100">0</span><span class="stat-sfx">%</span>
+    </div>
+    <div class="stat-desc">focado em quem está construindo o futuro</div>
+  </div>
+</div>
+
+<!-- ─── TABS — fundo branco ─── -->
+<section class="tabs-section" id="plataforma">
+  <h2 class="tabs-title">Mais do que crédito.</h2>
+  <div class="tabs-nav">
+    <button class="tab-btn active" data-tab="crescer">Para crescer</button>
+    <button class="tab-btn" data-tab="aprender">Para aprender</button>
+    <button class="tab-btn" data-tab="uni">Para universitários</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-crescer">
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg></div>
       <h3>Capital de giro</h3>
-      <p>Mantenha sua operação rodando sem comprometer o caixa.</p>
+      <p>Mantenha a operação fluindo sem comprometer o caixa da empresa.</p>
+      <a href="#solicitar" class="tc-link">Solicitar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg>
-      </div>
-      <h3>Expansão de negócios</h3>
-      <p>Abra novas unidades, entre em novos mercados, escale com segurança.</p>
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <h3>Estruturação de espaço</h3>
+      <p>Reforma, modernização e montagem de escritório para operar no nível certo.</p>
+      <a href="#solicitar" class="tc-link">Solicitar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-      </div>
-      <h3>Equipamentos e maquinários</h3>
-      <p>Modernize sua produção sem imobilizar o capital de giro.</p>
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
+      <h3>Equipamentos e tecnologia</h3>
+      <p>Modernize sua produção sem travar o capital de giro.</p>
+      <a href="#solicitar" class="tc-link">Solicitar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-      </div>
-      <h3>Estruturação de escritórios</h3>
-      <p>Monte um ambiente profissional para sua equipe operar no nível certo.</p>
+  </div>
+
+  <div class="tab-panel" id="tab-aprender">
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h3>Branding e posicionamento</h3>
+      <p>Construa uma marca que vale mais do que o produto que ela vende.</p>
+      <a href="#solicitar" class="tc-link">Acessar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-      </div>
-      <h3>Reforma e modernização</h3>
-      <p>Revitalize seu espaço para transmitir o posicionamento que você merece.</p>
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+      <h3>Vendas e captação de clientes</h3>
+      <p>Estratégias práticas para gerar receita de forma previsível e escalável.</p>
+      <a href="#solicitar" class="tc-link">Acessar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </div>
-      <h3>Marketing e vendas</h3>
-      <p>Invista em tráfego, branding e time comercial para crescer de forma previsível.</p>
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <h3>Gestão e inteligência de mercado</h3>
+      <p>Tome decisões melhores com dados, métricas e visão estratégica.</p>
+      <a href="#solicitar" class="tc-link">Acessar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <h3>Contratação de equipe</h3>
-      <p>Monte o time que seu projeto precisa para sair do plano e ir para a execução.</p>
+  </div>
+
+  <div class="tab-panel" id="tab-uni">
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+      <h3>Crédito antes da formatura</h3>
+      <p>Você não precisa esperar o diploma para começar a construir seu negócio.</p>
+      <a href="#solicitar" class="tc-link">Solicitar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-      </div>
-      <h3>Novos projetos</h3>
-      <p>Tire a ideia do papel com capital e estratégia para executar com inteligência.</p>
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
+      <h3>Desenvolvimento profissional</h3>
+      <p>Conteúdo prático de empreendedorismo para quem está começando do zero.</p>
+      <a href="#solicitar" class="tc-link">Acessar →</a>
     </div>
-    <div class="solution-card">
-      <div class="solution-icon">
-        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-      </div>
-      <h3>Universitários empreendedores</h3>
-      <p>Grandes empresas podem nascer dentro da universidade. A Noza acredita nisso.</p>
+    <div class="tc">
+      <div class="tc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Ecossistema completo</h3>
+      <p>Grandes empresas nascem dentro da universidade. A Noza acredita nisso.</p>
+      <a href="#solicitar" class="tc-link">Conhecer →</a>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- PLATFORM -->
-<section class="platform">
-  <div>
-    <span class="section-eyebrow">A diferença está no depois</span>
-    <h2 class="section-title">A maioria libera crédito.<br/>A Noza te ensina<br/>a usá-lo.</h2>
-    <p class="section-body">Ao contratar uma linha de crédito pela Noza, você recebe acesso a uma plataforma exclusiva com conteúdos práticos para empreendedores crescerem com mais segurança.</p>
-    <div class="platform-topics">
-      <span class="topic-pill">Branding e marca</span>
-      <span class="topic-pill">Marketing digital</span>
-      <span class="topic-pill">Vendas e negociação</span>
-      <span class="topic-pill">Gestão empresarial</span>
-      <span class="topic-pill">Posicionamento</span>
-      <span class="topic-pill">Inteligência de mercado</span>
-      <span class="topic-pill">Captação de clientes</span>
-      <span class="topic-pill">Produtividade</span>
-      <span class="topic-pill">Liderança</span>
-      <span class="topic-pill">Desenvolvimento</span>
-    </div>
-  </div>
-
-  <div class="platform-visual">
-    <span class="platform-visual-label">Plataforma Noza</span>
-    <h4>Dinheiro sem estratégia gera risco.<br/>Estratégia com capital gera crescimento.</h4>
-    <p>Conteúdos práticos para empreendedores tomarem decisões mais inteligentes com o capital disponível.</p>
-    <div class="visual-bar" id="visual-bars">
-      <div class="visual-bar-row">
-        <span class="visual-bar-name">Branding</span>
-        <div class="visual-bar-track"><div class="visual-bar-fill" data-width="85"></div></div>
-        <span class="visual-bar-pct">85%</span>
-      </div>
-      <div class="visual-bar-row">
-        <span class="visual-bar-name">Vendas</span>
-        <div class="visual-bar-track"><div class="visual-bar-fill" data-width="78"></div></div>
-        <span class="visual-bar-pct">78%</span>
-      </div>
-      <div class="visual-bar-row">
-        <span class="visual-bar-name">Marketing</span>
-        <div class="visual-bar-track"><div class="visual-bar-fill" data-width="91"></div></div>
-        <span class="visual-bar-pct">91%</span>
-      </div>
-      <div class="visual-bar-row">
-        <span class="visual-bar-name">Gestão</span>
-        <div class="visual-bar-track"><div class="visual-bar-fill" data-width="70"></div></div>
-        <span class="visual-bar-pct">70%</span>
-      </div>
-      <div class="visual-bar-row">
-        <span class="visual-bar-name">Posicionamento</span>
-        <div class="visual-bar-track"><div class="visual-bar-fill" data-width="82"></div></div>
-        <span class="visual-bar-pct">82%</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- AUDIENCE -->
-<div class="audience">
-  <div class="audience-block">
-    <span class="audience-tag">Para universitários</span>
-    <h2>Seu futuro não precisa esperar a formatura.</h2>
-    <p>Muitos esperam o diploma para iniciar seus projetos. Outros começam agora. A Noza criou um ecossistema que une crédito, educação e desenvolvimento profissional para quem quer construir algo próprio antes do mercado.</p>
-  </div>
-  <div class="audience-block">
-    <span class="audience-tag">Para empreendedores</span>
-    <h2>Cresça sem frear seus planos.</h2>
-    <p>Toda empresa chega a um momento em que crescer exige investimento. Novo equipamento. Nova unidade. Mais marketing. Mais equipe. A Noza foi criada para ajudar empresas a avançarem para o próximo nível sem deixar oportunidades passarem.</p>
-  </div>
-</div>
-
-<!-- MANIFESTO -->
+<!-- ─── MANIFESTO dark ─── -->
 <section class="manifesto">
-  <h2>Mais do que crédito. Um parceiro para sua evolução.</h2>
-  <p>Enquanto outras instituições analisam números, nós enxergamos potencial. Quando um empreendedor cresce, toda a economia cresce junto.</p>
+  <h2>Enquanto outros analisam números,<br/>nós <span class="grad-text">enxergamos potencial.</span></h2>
+  <p>Quando um empreendedor cresce, toda a economia cresce junto. Seu futuro começa com uma decisão.</p>
+  <a href="#solicitar" class="btn-solid" style="max-width:300px;display:inline-block">Solicitar minha análise</a>
 </section>
 
-<!-- LOGO PLACEHOLDER -->
-<div class="logo-section">
-  <div class="logo-placeholder">
-    <!-- Substituir pelo <img> da logo quando tiver o arquivo -->
-    LOGO NOZA
+<!-- ─── LOGO ─── -->
+<div class="logo-area">
+  <div class="logo-box">
+    <!-- Inserir logo: colocar src e remover display:none da img -->
+    <img src="" alt="Logo Noza" style="display:none"/>
+    <span class="logo-box-ph">Logo Noza</span>
   </div>
-  <p style="font-size:13px;color:var(--steel);">Crédito inteligente para quem está construindo o futuro.</p>
+  <p class="logo-tagline">Crédito inteligente para quem está construindo o futuro.</p>
 </div>
 
-<!-- FORM -->
-<section class="form-section" id="solicitar">
-  <div class="form-info">
-    <span class="section-eyebrow">Solicite sua análise</span>
-    <h2 class="section-title">Seu próximo passo começa aqui.</h2>
-    <p>Preencha o formulário e um especialista Noza entra em contato para entender o seu projeto e apresentar as melhores opções de crédito.</p>
-    <div class="form-trust">
-      <div class="form-trust-item"><span class="trust-dot"></span>Análise sem compromisso</div>
-      <div class="form-trust-item"><span class="trust-dot"></span>Atendimento personalizado</div>
-      <div class="form-trust-item"><span class="trust-dot"></span>Resposta em até 24 horas</div>
-      <div class="form-trust-item"><span class="trust-dot"></span>Crédito + plataforma educacional inclusa</div>
+<!-- ─── FORM branca ─── -->
+<div class="form-wrap" id="solicitar">
+  <div class="form-left">
+    <span class="form-left-tag">Solicite sua análise</span>
+    <h2>Seu próximo passo começa aqui.</h2>
+    <p>Preencha o formulário. Um especialista Noza entra em contato para entender seu projeto e apresentar as melhores opções de crédito.</p>
+    <div class="trust-list">
+      <div class="trust-item"><span class="trust-dot"></span>Análise sem compromisso</div>
+      <div class="trust-item"><span class="trust-dot"></span>Atendimento personalizado</div>
+      <div class="trust-item"><span class="trust-dot"></span>Resposta em até 24 horas</div>
+      <div class="trust-item"><span class="trust-dot"></span>Acesso gratuito à plataforma educacional</div>
     </div>
   </div>
-
-  <div class="form-box">
-    <label>
-      Nome completo
-      <input type="text" id="f-nome" placeholder="Seu nome" autocomplete="name" />
-    </label>
-    <label>
-      WhatsApp
-      <input type="tel" id="f-wpp" placeholder="(51) 99999-9999" autocomplete="tel" />
-    </label>
-    <label>
-      E-mail
-      <input type="email" id="f-email" placeholder="seuemail@email.com" autocomplete="email" />
-    </label>
-    <label>
-      Tipo de negócio
-      <select id="f-tipo">
-        <option value="" disabled selected>Selecione uma opção</option>
-        <option>Universitário empreendedor</option>
-        <option>Empresa em expansão</option>
-        <option>Negócio em início de operação</option>
-        <option>Profissional autônomo / MEI</option>
-        <option>Outro</option>
-      </select>
-    </label>
-    <button class="form-submit" onclick="enviarWhatsApp()">Solicitar análise gratuita →</button>
+  <div class="form-right">
+    <div class="form-fields">
+      <label>Nome completo<input type="text" id="f-nome" placeholder="Seu nome" autocomplete="name"/></label>
+      <label>WhatsApp<input type="tel" id="f-wpp" placeholder="(51) 99999-9999" autocomplete="tel"/></label>
+      <label>E-mail<input type="email" id="f-email" placeholder="seuemail@email.com" autocomplete="email"/></label>
+      <label>Tipo de negócio
+        <select id="f-tipo">
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option>Universitário empreendedor</option>
+          <option>Empresa em expansão</option>
+          <option>Negócio em início de operação</option>
+          <option>Profissional autônomo / MEI</option>
+          <option>Outro</option>
+        </select>
+      </label>
+      <button class="form-submit" onclick="enviarWhatsApp()">Solicitar análise gratuita →</button>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- FOOTER -->
+<!-- ─── FOOTER ─── -->
 <footer>
-  <div class="footer-logo">NO<span>ZA</span></div>
-  <div class="footer-copy">Crédito inteligente para quem está construindo o futuro.</div>
+  <div class="footer-brand">NOZA</div>
+  <div class="footer-copy">© 2025 Noza. Crédito inteligente para quem está construindo o futuro.</div>
 </footer>
 
 <script>
-  /* ── COUNTER ANIMATION ── */
+  /* TABS */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  /* COUNTER */
   function animateCount(el) {
     const target = parseInt(el.dataset.target, 10);
-    const duration = 1600;
-    const start = performance.now();
-    const easeOut = t => 1 - Math.pow(1 - t, 3);
-
-    function step(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = Math.round(easeOut(progress) * target);
-      el.textContent = value;
-      if (progress < 1) requestAnimationFrame(step);
+    const dur = 2000;
+    const t0 = performance.now();
+    const ease = t => 1 - Math.pow(1 - t, 4);
+    (function step(now) {
+      const p = Math.min((now - t0) / dur, 1);
+      el.textContent = Math.round(ease(p) * target);
+      if (p < 1) requestAnimationFrame(step);
       else el.textContent = target;
+    })(t0);
+  }
+  const statsEl = document.getElementById('stats-bar');
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.count-up').forEach(animateCount);
+      obs.disconnect();
     }
-    requestAnimationFrame(step);
-  }
+  }, { threshold: 0.35 });
+  obs.observe(statsEl);
 
-  /* ── BAR ANIMATION ── */
-  function animateBars() {
-    document.querySelectorAll('.visual-bar-fill').forEach(bar => {
-      bar.style.width = bar.dataset.width + '%';
-    });
-  }
-
-  /* ── INTERSECTION OBSERVER ── */
-  const statsObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        document.querySelectorAll('.count-up').forEach(animateCount);
-        statsObs.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-  statsObs.observe(document.getElementById('stats-bar'));
-
-  const barsObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateBars();
-        barsObs.disconnect();
-      }
-    });
-  }, { threshold: 0.4 });
-  barsObs.observe(document.getElementById('visual-bars'));
-
-  /* ── WHATSAPP ── */
+  /* WHATSAPP */
   function enviarWhatsApp() {
     const nome  = document.getElementById('f-nome').value.trim();
     const wpp   = document.getElementById('f-wpp').value.trim();
     const email = document.getElementById('f-email').value.trim();
     const tipo  = document.getElementById('f-tipo').value;
-
     if (!nome || !wpp || !email || !tipo) {
       alert('Por favor, preencha todos os campos antes de continuar.');
       return;
     }
-
     const msg = encodeURIComponent(
       `Olá, vim pelo site da Noza e gostaria de solicitar uma análise de crédito.\n\n` +
-      `*Nome:* ${nome}\n` +
-      `*WhatsApp:* ${wpp}\n` +
-      `*E-mail:* ${email}\n` +
-      `*Tipo de negócio:* ${tipo}`
+      `*Nome:* ${nome}\n*WhatsApp:* ${wpp}\n*E-mail:* ${email}\n*Tipo de negócio:* ${tipo}`
     );
-
     window.open(`https://wa.me/5551985402367?text=${msg}`, '_blank');
   }
 </script>
-
 </body>
 </html>
