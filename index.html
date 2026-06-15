@@ -1188,7 +1188,7 @@
       document.querySelectorAll('.count-up').forEach(animateCount);
       obs.disconnect();
     }
-  }, { threshold: 0.35 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   obs.observe(statsEl);
 
   /* WHATSAPP */
