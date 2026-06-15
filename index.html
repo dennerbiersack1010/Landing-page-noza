@@ -153,19 +153,7 @@
     }
     .btn-hollow:hover{border-color:rgba(255,255,255,0.65)}
 
-    /* scroll indicator */
-    .hero-scroll{
-      position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
-      width:32px;height:1px;background:rgba(255,255,255,0.25);
-    }
-    .hero-scroll::after{
-      content:'';display:block;width:8px;height:1px;
-      background:var(--white);
-      animation:scrollSlide 2s infinite;
-    }
-    @keyframes scrollSlide{
-      0%{transform:translateX(0)}50%{transform:translateX(24px)}100%{transform:translateX(0)}
-    }
+
 
     /* ─── HERO IMAGE ─── */
     .hero-image{
@@ -593,7 +581,7 @@
     <a href="#solucoes" class="btn-hollow">Explorar soluções</a>
   </div>
 
-  <div class="hero-scroll"></div>
+
 </section>
 
 <!-- ─── HERO IMAGE ─── -->
