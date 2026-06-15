@@ -521,7 +521,7 @@
     /* ─── PHONE SECTION ─── */
     .phone-section{
       background:var(--black);
-      padding:100px 48px 120px;
+      padding:100px 48px 0;
       text-align:center;
       overflow:hidden;
     }
@@ -536,83 +536,56 @@
       margin-bottom:80px;
     }
     .phone-stage{
-      display:flex;align-items:flex-end;justify-content:center;
-      position:relative;height:clamp(420px,55vw,680px);
+      position:relative;
+      height:clamp(500px,65vw,820px);
+      max-width:1200px;
+      margin:0 auto;
     }
     /* celular central */
     .phone-main{
       position:absolute;
       z-index:3;
-      width:clamp(220px,24vw,320px);
+      width:clamp(260px,28vw,380px);
       bottom:0;left:50%;
       transform:translateX(-50%);
     }
     .phone-main img{
       width:100%;height:auto;display:block;
-      border-radius:32px;
-      box-shadow:0 40px 80px rgba(0,0,0,0.7);
+      border-radius:36px;
+      box-shadow:0 48px 96px rgba(0,0,0,0.8);
     }
-    /* fantasmas */
+    /* fantasmas — partem de trás do celular central */
     .phone-ghost{
       position:absolute;
       bottom:0;
-      width:clamp(180px,20vw,270px);
+      width:clamp(240px,26vw,360px);
       z-index:2;
-      /* estado inicial: atrás do celular central */
       opacity:0;
-      transition: transform 0.9s cubic-bezier(0.16,1,0.3,1),
-                  opacity 0.6s ease;
+      transition:transform 1s cubic-bezier(0.16,1,0.3,1),
+                 opacity 0.5s ease;
     }
     .phone-ghost img{
       width:100%;height:auto;display:block;
-      border-radius:28px;
-      filter:brightness(0.45);
-      box-shadow:0 30px 60px rgba(0,0,0,0.6);
+      border-radius:32px;
+      filter:brightness(0.4);
+      box-shadow:0 32px 64px rgba(0,0,0,0.6);
     }
+    /* posição inicial: ambos atrás do central */
     .phone-ghost-left{
       left:50%;
-      transform:translateX(-50%) scale(0.9);
-      transform-origin:bottom center;
+      transform:translateX(-50%) scale(0.92);
     }
     .phone-ghost-right{
       left:50%;
-      transform:translateX(-50%) scale(0.9);
-      transform-origin:bottom center;
+      transform:translateX(-50%) scale(0.92);
     }
-    /* estado revelado: saem para os lados */
+    /* revelado: saem pouquinho, ficam quase atrás mas aparecem */
     .phone-section.revealed .phone-ghost{ opacity:1 }
     .phone-section.revealed .phone-ghost-left{
-      transform:translateX(calc(-50% - clamp(160px,18vw,260px))) scale(0.88);
+      transform:translateX(calc(-50% - clamp(120px,12vw,180px))) scale(0.92);
     }
     .phone-section.revealed .phone-ghost-right{
-      transform:translateX(calc(-50% + clamp(160px,18vw,260px))) scale(0.88);
-    }
-
-    /* ─── SHIMMER DENTRO DA LOGO ─── */
-    .logo-shimmer{
-      position:relative;
-      display:inline-block;
-      overflow:hidden; /* confina o brilho dentro da imagem */
-    }
-    .logo-shimmer img{ display:block; }
-    .logo-shimmer::after{
-      content:'';
-      position:absolute;
-      top:0;left:-100%;
-      width:55%;height:100%;
-      background:linear-gradient(
-        105deg,
-        transparent 20%,
-        rgba(200,200,200,0.22) 50%,
-        transparent 80%
-      );
-      animation:shimmer 4s infinite;
-      pointer-events:none;
-    }
-    @keyframes shimmer{
-      0%  { left:-100% }
-      55% { left:160%  }
-      100%{ left:160%  }
+      transform:translateX(calc(-50% + clamp(120px,12vw,180px))) scale(0.92);
     }
 
     /* ─── RESPONSIVE ─── */
@@ -624,16 +597,16 @@
       /* MOBILE: botões empilhados */
       .hero-actions{flex-direction:column;align-items:center;max-width:340px}
       .btn-solid,.btn-hollow{width:100%;text-align:center}
-      .phone-section{padding:72px 24px 88px}
-      .phone-title{margin-bottom:48px}
-      .phone-stage{height:clamp(320px,70vw,480px)}
-      .phone-main{width:clamp(140px,42vw,200px)}
-      .phone-ghost{width:clamp(110px,32vw,160px)}
+      .phone-section{padding:72px 0 0}
+      .phone-title{margin-bottom:48px;padding:0 24px}
+      .phone-stage{height:clamp(360px,80vw,520px)}
+      .phone-main{width:clamp(170px,46vw,240px)}
+      .phone-ghost{width:clamp(155px,42vw,220px)}
       .phone-section.revealed .phone-ghost-left{
-        transform:translateX(calc(-50% - clamp(100px,28vw,160px))) scale(0.88);
+        transform:translateX(calc(-50% - clamp(80px,10vw,130px))) scale(0.92);
       }
       .phone-section.revealed .phone-ghost-right{
-        transform:translateX(calc(-50% + clamp(100px,28vw,160px))) scale(0.88);
+        transform:translateX(calc(-50% + clamp(80px,10vw,130px))) scale(0.92);
       }
       .pillars,.mosaic,.tabs-section,.manifesto,.logo-area{padding:64px 24px}
       .pillars-grid,.mosaic-grid{grid-template-columns:1fr}
@@ -659,9 +632,7 @@
 <!-- ─── NAV ─── -->
 <nav>
   <a href="#" class="nav-logo">
-    <span class="logo-shimmer">
-      <img src="images/logo-noza.png" alt="Noza" style="height:72px;width:auto;display:block;"/>
-    </span>
+    <img src="images/logo-noza.png" alt="Noza" style="height:72px;width:auto;display:block;"/>
   </a>
   <div class="nav-links">
     <a href="#solucoes">Soluções</a>
@@ -1016,9 +987,7 @@
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="footer-brand">
-    <span class="logo-shimmer">
-      <img src="images/logo-noza.png" alt="Noza" style="height:68px;width:auto;display:block;"/>
-    </span>
+    <img src="images/logo-noza.png" alt="Noza" style="height:68px;width:auto;display:block;"/>
   </div>
   <div class="footer-copy">© 2026 Noza. Crédito inteligente para quem está construindo o futuro.</div>
 </footer>
